@@ -29,34 +29,30 @@ export class AppComponent implements OnInit, OnChanges, DoCheck {
   public city: string = 'new york';
   public unit = 'metric'
   public responseStatus:unknown = undefined;
+  public error:any;
   constructor(private apiService: ApiService) {
 
   }
-
-
-  clickme() {
+  fetchData() {
     if(this.newValue !== ''){
       this.renderData()
-      // this.newValue = ''
+      this.newValue = ''
+      this.error = ''
     }else{
-      alert('Enter some City name')
+      this.error = 'Enter some City name'
     }
-
   }
   clearFocus(props:any){
     props.value = ''
   }
   ngDoCheck() {
-
   }
   ngOnChanges() {
 
   }
-
   ngOnInit(): void {
     this.renderData()
   }
-
   renderData() {
     this.apiService.getData(this.newValue, this.unit).subscribe((response) => {
       this.dataToRender = response;
@@ -71,8 +67,6 @@ export class AppComponent implements OnInit, OnChanges, DoCheck {
       this.windSpeed = this.dataToRender.wind.speed;
       this.visibility = this.dataToRender.visibility / 1000;
       this.responseStatus = this.dataToRender.cod
-      // console.log(this.dataToRender,this.responseStatus);
-
       if (this.clouds == 'Clear') {
         this.bgUrl = this.bgSunny
       } else if (this.clouds == "Clouds") {
@@ -80,6 +74,8 @@ export class AppComponent implements OnInit, OnChanges, DoCheck {
       }else{
         this.bgUrl = this.bgRain
       }
+    }, (error) => {
+      this.error = error;
     })
   }
 }

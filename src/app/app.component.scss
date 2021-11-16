@@ -61,7 +61,13 @@
             padding: 5px;
             background-color: rgba(255,255,255, 0.3);
             border-radius: 10px;
+            transition: .4s ease-in-out;
         }
+        .prop-val-wrapper:hover{
+            background-color: rgba(226, 41, 41, 0.4);
+            cursor: pointer;
+        }
+        
         .property{
             font-weight: bold;
             font-size: 22px;
@@ -81,4 +87,29 @@
     }
     
     
+}
+.error-message{
+    position: absolute;
+    top: -30%;
+    left: 50%;
+    z-index: 2000;
+    transform: translateX(-50%);
+    font-size: 30px;
+    color: rgb(180, 131, 131);
+    text-transform: uppercase;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: rgba(0,0,0, 0.9);
+    font-weight: bold;
+    visibility: hidden;
+    pointer-events: none;
+    transition: .5s ease-in-out;
+    cursor: not-allowed;
+    &.show-error{
+        top: 30%;
+        visibility: visible;
+        // color: red;
+        pointer-events: all;
+
+    }
 }
