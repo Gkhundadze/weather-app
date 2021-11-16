@@ -10,7 +10,7 @@ import { ApiService } from './api.service';
 
 
 export class AppComponent implements OnInit, OnChanges, DoCheck {
-
+  public newValue = 'Tbilisi'
   public dataToRender: any = [];
   public country: string = '';
   public cityName: string = '';
@@ -22,8 +22,9 @@ export class AppComponent implements OnInit, OnChanges, DoCheck {
   public cloudsDescription: String = '';
   public windSpeed = null;
   public visibility: number = 0;
-  public showSun = false;
-  public showCloud = false;
+  public bgSunny:string = 'assets/sun.jpg'
+  public bgCloudly:string = 'assets/cloud.jpg'
+  public bgRain:string = 'assets/rain.jpg'
   public bgUrl: string = '';
   public city: string = 'new york';
   public unit = 'metric'
@@ -33,15 +34,17 @@ export class AppComponent implements OnInit, OnChanges, DoCheck {
   }
 
 
-  clickme(inputRef:any) {
-    if(inputRef.value !== ''){
-      this.city = inputRef.value;
+  clickme() {
+    if(this.newValue !== ''){
       this.renderData()
-      inputRef.value = '';
+      // this.newValue = ''
     }else{
       alert('Enter some City name')
     }
 
+  }
+  clearFocus(props:any){
+    props.value = ''
   }
   ngDoCheck() {
 
@@ -55,7 +58,7 @@ export class AppComponent implements OnInit, OnChanges, DoCheck {
   }
 
   renderData() {
-    this.apiService.getData(this.city, this.unit).subscribe((response) => {
+    this.apiService.getData(this.newValue, this.unit).subscribe((response) => {
       this.dataToRender = response;
       this.temp = this.dataToRender.main.temp;
       this.feelsLike = this.dataToRender.main.feels_like;
@@ -71,11 +74,11 @@ export class AppComponent implements OnInit, OnChanges, DoCheck {
       // console.log(this.dataToRender,this.responseStatus);
 
       if (this.clouds == 'Clear') {
-        this.showSun = true;
-        this.bgUrl = 'https://thumbs.dreamstime.com/b/sun-sunset-mountain-clear-day-mounting-171703509.jpg'
+        this.bgUrl = this.bgSunny
       } else if (this.clouds == "Clouds") {
-        this.showSun = false;
-        this.bgUrl = 'https://i.ytimg.com/vi/KI15t6nfDiY/maxresdefault.jpg'
+        this.bgUrl = this.bgCloudly
+      }else{
+        this.bgUrl = this.bgRain
       }
     })
   }

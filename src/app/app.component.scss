@@ -1,5 +1,8 @@
 .container{
     padding: 10px 20px;
+    @media screen and (max-width: 480px) {
+        padding: 5px;
+      }
     .card {
         background-position: center;
         background-size: cover;
@@ -7,19 +10,34 @@
         margin: 30px 10px;
         border-radius: 20px;
         border: 2px solid rgb(80, 25, 11);
+        @media screen and (max-width: 480px) {
+            padding: 5px;
+            margin: 5px;
+          }
         .card-title{
             text-align: center;
             color: rgb(207, 201, 170);
+            form{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
             input{
                 padding: 15px;
                 font-size: 16px;
                 margin: 20px 5px 20px 5px;
                 border-radius: 10px;
+                background-color: rgba(255, 255, 255, 0.5);
                 transition: all .3s ease-in-out;
                 &:hover{
                     background-color: rgba(226, 41, 41, 0.5);
                     color: white;
                 }
+                @media screen and (max-width: 480px) {
+                    padding: 8px;
+                    font-size: 14px;
+                    margin: 20px 5px 20px 5px;
+                  }
             }
             button{
                 padding: 15px;
@@ -31,8 +49,11 @@
                 &:hover{
                     background-color: rgba(226, 41, 41, 0.5);
                     color: white;
-    
                 }
+                @media screen and (max-width: 480px) {
+                    font-size: 14px;
+                    padding: 8px;
+                  }
             }
         }
         .prop-val-wrapper{
@@ -45,11 +66,17 @@
             font-weight: bold;
             font-size: 22px;
             text-transform: capitalize;
+            @media screen and (max-width: 480px) {
+                font-size: 16px;
+              }
         }
         .value{
             float: right;
             margin-right: 10px;
             font-size: 18px;
+            @media screen and (max-width: 480px) {
+                font-size: 16px;
+              }
         }
     }
     

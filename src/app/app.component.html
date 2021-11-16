@@ -2,11 +2,13 @@
     <div [style.backgroundImage]="'url(' + bgUrl + ')'" class="card">
         <div class="card-title">
             <h1>Weather App</h1>
-            <form (submit)="clickme(username)" action="#">
-                <input type="text" id="username" name="userInput" #username placeholder="Enter City Name ...">
-                <button type="submit" >Search</button>
+            <p>{{newValue}}</p>
+            <form (submit)="clickme()">
+                <input [(ngModel)]='newValue' type="text" name="newValue" placeholder="Enter City Name ..." #mainInput
+                    (focus)='clearFocus(mainInput)' />
+                <button type="submit">Search</button>
             </form>
-            
+
         </div>
         <div class="prop-val-wrapper"><span class="property">Country :</span> <span class="value"> {{country}}</span>
         </div>
@@ -23,7 +25,16 @@
                 km/h</span></div>
         <div class="prop-val-wrapper"><span class="property">visibility :</span> <span class="value">{{visibility}}
                 km</span></div>
-        <div class="prop-val-wrapper"><span class="property">Sky :</span> <span class="value">{{clouds}} <i *ngIf="showSun; else cloud" class="fas fa-sun"></i> <ng-template #cloud><i class="fas fa-cloud"></i></ng-template></span>
+        <div class="prop-val-wrapper">
+            <span class="property">Sky :</span>
+            <span class="value">{{clouds}}
+                <ng-container *ngIf="clouds =='Clouds'; then cloud"></ng-container>
+                <ng-container *ngIf="clouds =='Rain'; then rain"></ng-container>
+                <ng-container *ngIf="clouds =='Clear'; then sun"></ng-container>
+                <ng-template #sun><i class="fas fa-sun"></i></ng-template>
+                    <ng-template #cloud><i class="fas fa-cloud"></i></ng-template>
+                    <ng-template #rain><i class="fas fa-cloud-rain"></i></ng-template>
+            </span>
             <div><span class="property">Description :</span><span class="value">{{cloudsDescription}}</span></div>
         </div>
     </div>
