@@ -1,4 +1,4 @@
-import { Component, DoCheck, Input, OnChanges, OnInit } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewInit, Component, DoCheck, ElementRef, Input, OnChanges, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
 import { ApiService } from './api.service';
 
 @Component({
@@ -9,7 +9,8 @@ import { ApiService } from './api.service';
 
 
 
-export class AppComponent implements OnInit, OnChanges, DoCheck {
+export class AppComponent implements OnInit, AfterContentInit,  OnChanges, DoCheck, AfterViewInit, AfterContentChecked {
+
   public newValue = 'Tbilisi'
   public dataToRender: any = [];
   public country: string = '';
@@ -30,9 +31,18 @@ export class AppComponent implements OnInit, OnChanges, DoCheck {
   public unit = 'metric'
   public responseStatus:unknown = undefined;
   public error:any;
-  constructor(private apiService: ApiService) {
+  public lon:any   ;
+  public lat:any   ;
+
+
+  constructor(
+    private apiService: ApiService,
+    ) {
+  }
+  ngAfterViewInit() {
 
   }
+
   fetchData() {
     if(this.newValue !== ''){
       this.renderData()
@@ -45,16 +55,28 @@ export class AppComponent implements OnInit, OnChanges, DoCheck {
   clearFocus(props:any){
     props.value = ''
   }
+  ngAfterContentChecked(){
+  }
   ngDoCheck() {
+    
+  }
+  ngAfterContentInit(){
+    
+    
   }
   ngOnChanges() {
-
+    
   }
   ngOnInit(): void {
     this.renderData()
+    
+    
+    
   }
   renderData() {
     this.apiService.getData(this.newValue, this.unit).subscribe((response) => {
+      console.log(response);
+      
       this.dataToRender = response;
       this.temp = this.dataToRender.main.temp;
       this.feelsLike = this.dataToRender.main.feels_like;
@@ -66,7 +88,14 @@ export class AppComponent implements OnInit, OnChanges, DoCheck {
       this.cloudsDescription = this.dataToRender.weather[0].description;
       this.windSpeed = this.dataToRender.wind.speed;
       this.visibility = this.dataToRender.visibility / 1000;
-      this.responseStatus = this.dataToRender.cod
+      this.responseStatus = this.dataToRender.cod;
+      this.lat = this.dataToRender.coord.lat
+      this.lon = this.dataToRender.coord.lon
+      console.log('assigning', this.lat);
+      console.log('assigning', this.lon);
+      
+  
+      
       if (this.clouds == 'Clear') {
         this.bgUrl = this.bgSunny
       } else if (this.clouds == "Clouds") {
@@ -78,4 +107,5 @@ export class AppComponent implements OnInit, OnChanges, DoCheck {
       this.error = error;
     })
   }
+  
 }

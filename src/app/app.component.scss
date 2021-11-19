@@ -1,3 +1,8 @@
+.d-flex-centered{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .container{
     padding: 10px 20px;
     @media screen and (max-width: 480px) {
@@ -113,3 +118,14 @@
 
     }
 }
+.map-container {
+    iframe{
+        border: wheat 1px solid;
+    }
+    .prop-val-wrapper{
+    
+        color: wheat;
+        text-transform: capitalize;
+    }
+}
+
