@@ -31,18 +31,14 @@ export class AppComponent implements OnInit, AfterContentInit,  OnChanges, DoChe
   public unit = 'metric'
   public responseStatus:unknown = undefined;
   public error:any;
-  public lon:any   ;
-  public lat:any   ;
+  public lon:any;
+  public lat:any;
 
 
   constructor(
     private apiService: ApiService,
     ) {
   }
-  ngAfterViewInit() {
-
-  }
-
   fetchData() {
     if(this.newValue !== ''){
       this.renderData()
@@ -55,13 +51,16 @@ export class AppComponent implements OnInit, AfterContentInit,  OnChanges, DoChe
   clearFocus(props:any){
     props.value = ''
   }
+  ngAfterViewInit() {
+
+  }
   ngAfterContentChecked(){
+
   }
   ngDoCheck() {
     
   }
   ngAfterContentInit(){
-    
     
   }
   ngOnChanges() {
@@ -69,14 +68,11 @@ export class AppComponent implements OnInit, AfterContentInit,  OnChanges, DoChe
   }
   ngOnInit(): void {
     this.renderData()
-    
-    
-    
+
   }
+
   renderData() {
     this.apiService.getData(this.newValue, this.unit).subscribe((response) => {
-      console.log(response);
-      
       this.dataToRender = response;
       this.temp = this.dataToRender.main.temp;
       this.feelsLike = this.dataToRender.main.feels_like;
@@ -91,11 +87,6 @@ export class AppComponent implements OnInit, AfterContentInit,  OnChanges, DoChe
       this.responseStatus = this.dataToRender.cod;
       this.lat = this.dataToRender.coord.lat
       this.lon = this.dataToRender.coord.lon
-      console.log('assigning', this.lat);
-      console.log('assigning', this.lon);
-      
-  
-      
       if (this.clouds == 'Clear') {
         this.bgUrl = this.bgSunny
       } else if (this.clouds == "Clouds") {

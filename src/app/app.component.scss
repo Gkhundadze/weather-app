@@ -8,7 +8,18 @@
     @media screen and (max-width: 480px) {
         padding: 5px;
       }
+    .blur-opacity{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 0;
+        pointer-events: none;
+        background-color: rgba(0,0,0, 0.2);
+    }
     .card {
+        transition: all .5s .1s ease-in-out;
         background-position: center;
         background-size: cover;
         padding: 30px 10px;
@@ -70,9 +81,10 @@
         }
         .prop-val-wrapper:hover{
             background-color: rgba(226, 41, 41, 0.4);
+            color: wheat;
+            font-weight: bold;
             cursor: pointer;
         }
-        
         .property{
             font-weight: bold;
             font-size: 22px;
@@ -90,8 +102,6 @@
               }
         }
     }
-    
-    
 }
 .error-message{
     position: absolute;
@@ -118,14 +128,3 @@
 
     }
 }
-.map-container {
-    iframe{
-        border: wheat 1px solid;
-    }
-    .prop-val-wrapper{
-    
-        color: wheat;
-        text-transform: capitalize;
-    }
-}
-

@@ -14,7 +14,7 @@ export class ApiService   {
   constructor(private http:HttpClient) {
   }
   getData(city : string, unit : string ) : Observable<any> {
-    // console.log('init');
+    // console.log(this.baseURL+city+this.apiKey+this.units+unit);
     return this.http.get<any>(this.baseURL+city+this.apiKey+this.units+unit).pipe(catchError(this.handleError))
   }
   handleError(error:any){
