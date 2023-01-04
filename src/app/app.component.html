@@ -1,10 +1,7 @@
 <div class="container">
-    <div class="blur-opacity">
-    </div>
     <div [style.backgroundImage]="'url(' + bgUrl + ')'" class="card">
         <div class="card-title">
             <h1>Weather App</h1>
-            <!-- <p>Current Value :{{newValue}}</p> -->
             <form (submit)="fetchData()">
                 <input [(ngModel)]='newValue' type="text" name="newValue" placeholder="Enter City Name ..." #mainInput
                     (focus)='clearFocus(mainInput)' />
@@ -13,51 +10,42 @@
         </div>
         <div class="prop-val-wrapper">
             <span class="property">Country :</span>
-
             <span class="value"> {{country}}</span>
         </div>
         <div class="prop-val-wrapper">
             <span class="property">City name :</span>
-
             <span class="value"> {{cityName}}</span>
         </div>
         <div class="prop-val-wrapper">
             <span class="property">Temp :</span>
-
             <span class="value">{{temp}} °</span>
         </div>
         <div class="prop-val-wrapper">
             <span class="property">feels like :</span>
-
             <span class="value">{{feelsLike}}
                 °</span>
         </div>
         <div class="prop-val-wrapper">
             <span class="property">humidity :</span>
-
             <span class="value">{{humidity}} %</span>
         </div>
         <div class="prop-val-wrapper">
             <span class="property">pressure :</span>
-
             <span class="value">{{pressure}}
                 hPa</span>
         </div>
         <div class="prop-val-wrapper">
             <span class="property">windSpeed :</span>
-
             <span class="value">{{windSpeed}}
                 km/h</span>
         </div>
         <div class="prop-val-wrapper">
             <span class="property">visibility :</span>
-
             <span class="value">{{visibility}}
                 km</span>
         </div>
         <div class="prop-val-wrapper">
             <span class="property">Sky :</span>
-
             <span class="value">{{clouds}}
                 <ng-container *ngIf="clouds =='Clouds'; then cloud"></ng-container>
                 <ng-container *ngIf="clouds =='Rain'; then rain"></ng-container>
@@ -82,4 +70,3 @@
 <div *ngIf="error" class="error-message" [ngClass]="{'show-error': error !== ''}">
     <p>{{error}}</p>
 </div>
-

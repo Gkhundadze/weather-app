@@ -9,7 +9,7 @@ import { ApiService } from './api.service';
 
 
 
-export class AppComponent implements OnInit, AfterContentInit,  OnChanges, DoCheck, AfterViewInit, AfterContentChecked {
+export class AppComponent implements OnInit {
 
   public newValue = 'Tbilisi'
   public dataToRender: any = [];
@@ -50,21 +50,6 @@ export class AppComponent implements OnInit, AfterContentInit,  OnChanges, DoChe
   }
   clearFocus(props:any){
     props.value = ''
-  }
-  ngAfterViewInit() {
-
-  }
-  ngAfterContentChecked(){
-
-  }
-  ngDoCheck() {
-    
-  }
-  ngAfterContentInit(){
-    
-  }
-  ngOnChanges() {
-    
   }
   ngOnInit(): void {
     this.renderData()

@@ -1,51 +1,41 @@
-.d-flex-centered{
+.d-flex-centered {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.container{
+.container {
     padding: 10px 20px;
     @media screen and (max-width: 480px) {
         padding: 5px;
-      }
-    .blur-opacity{
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 0;
-        pointer-events: none;
-        background-color: rgba(0,0,0, 0.2);
     }
     .card {
         transition: all .5s .1s ease-in-out;
         background-position: center;
         background-size: cover;
-        padding: 30px 10px;
+        padding: 30px 10px 100px 10px;
         margin: 30px 10px;
         border-radius: 20px;
         border: 2px solid rgb(80, 25, 11);
         @media screen and (max-width: 480px) {
-            padding: 5px;
+            padding: 10px 10px 100px 10px;
             margin: 5px;
-          }
-        .card-title{
+        }
+        .card-title {
             text-align: center;
             color: rgb(207, 201, 170);
-            form{
+            form {
                 display: flex;
                 align-items: center;
                 justify-content: center;
             }
-            input{
+            input {
                 padding: 15px;
                 font-size: 16px;
                 margin: 20px 5px 20px 5px;
                 border-radius: 10px;
                 background-color: rgba(255, 255, 255, 0.5);
                 transition: all .3s ease-in-out;
-                &:hover{
+                &:hover {
                     background-color: rgba(226, 41, 41, 0.5);
                     color: white;
                 }
@@ -53,57 +43,58 @@
                     padding: 8px;
                     font-size: 14px;
                     margin: 20px 5px 20px 5px;
-                  }
+                }
             }
-            button{
+            button {
                 padding: 15px;
                 font-size: 16px;
                 border-radius: 10px;
                 cursor: pointer;
                 background-color: rgba(250, 250, 250, 0.5);
                 transition: all .3s ease-in-out;
-                &:hover{
+                &:hover {
                     background-color: rgba(226, 41, 41, 0.5);
                     color: white;
                 }
                 @media screen and (max-width: 480px) {
                     font-size: 14px;
                     padding: 8px;
-                  }
+                }
             }
         }
-        .prop-val-wrapper{
+        .prop-val-wrapper {
             margin-bottom: 5px;
             padding: 5px;
-            background-color: rgba(255,255,255, 0.3);
+            background-color: rgba(255, 255, 255, 0.3);
             border-radius: 10px;
             transition: .4s ease-in-out;
         }
-        .prop-val-wrapper:hover{
+        .prop-val-wrapper:hover {
             background-color: rgba(226, 41, 41, 0.4);
             color: wheat;
             font-weight: bold;
             cursor: pointer;
         }
-        .property{
+        .property {
             font-weight: bold;
             font-size: 22px;
             text-transform: capitalize;
             @media screen and (max-width: 480px) {
                 font-size: 16px;
-              }
+            }
         }
-        .value{
+        .value {
             float: right;
             margin-right: 10px;
             font-size: 18px;
             @media screen and (max-width: 480px) {
                 font-size: 16px;
-              }
+            }
         }
     }
+
 }
-.error-message{
+.error-message {
     position: absolute;
     top: -30%;
     left: 50%;
@@ -114,17 +105,15 @@
     text-transform: uppercase;
     padding: 20px;
     border-radius: 20px;
-    background-color: rgba(0,0,0, 0.9);
+    background-color: rgba(0, 0, 0, 0.9);
     font-weight: bold;
     visibility: hidden;
     pointer-events: none;
     transition: .5s ease-in-out;
     cursor: not-allowed;
-    &.show-error{
+    &.show-error {
         top: 30%;
         visibility: visible;
-        // color: red;
         pointer-events: all;
-
     }
 }
